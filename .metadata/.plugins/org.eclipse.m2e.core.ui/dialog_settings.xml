@@ -26,6 +26,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\may\springbo"/>
 			<item value="C:\Users\may\myspringbootnew"/>
 		</list>
 		<list key="projectNameTemplate">

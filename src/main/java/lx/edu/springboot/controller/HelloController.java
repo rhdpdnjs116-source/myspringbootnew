@@ -20,4 +20,9 @@ public class HelloController {
 		model.addAttribute("vo", vo);
 		return "hello";
 	}
+	
+	public static void yewon( ) {
+		
+	}
+	
 }
