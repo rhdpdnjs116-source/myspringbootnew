@@ -36,5 +36,9 @@ public class AddrBookDAO {
 	public AddrBookVO getDB(int id) {
 		return session.selectOne("getDB");
 	}
+
+	   public int deleteDB (int abId) throws Exception {
+	       return session.delete("deleteDB",abId);
+	   }
 	
 }

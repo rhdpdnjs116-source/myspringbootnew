@@ -76,4 +76,16 @@ public class AddrBookController {
 		return "redirect:addrbook_list.do";
 	}
 	
+	   
+	   @RequestMapping("/update.do")
+	   public String update(AddrBookVO ab) throws Exception{
+	       dao.updateDB(ab);
+	       return "redirect:addrbook_list.do";
+	   }
+	   @RequestMapping("/delete.do")
+	   public String delete(@RequestParam("abId")int abId ) throws Exception{
+	       dao.deleteDB(abId);
+	       return "redirect:addrbook_list.do";
+	   }
+	
 }
