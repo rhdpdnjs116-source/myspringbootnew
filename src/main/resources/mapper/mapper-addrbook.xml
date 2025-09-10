@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lx.edu.springboot.dao.AddrBookDAO">
+
+    <select id="getDBList" resultType="lx.edu.springboot.vo.AddrBookVO">
+        SELECT ab_id AS abId,
+               ab_name AS abName,
+               ab_email AS abEmail,
+               ab_comdept AS abComdept,
+               ab_birth AS abBirth,
+               ab_tel AS abTel,
+               ab_memo AS abMemo
+        FROM addrbook
+    </select>
+
+    <select id="selectDBList" resultType="lx.edu.springboot.vo.AddrBookVO">
+        SELECT ab_id AS abId,
+               ab_name AS abName,
+               ab_email AS abEmail,
+               ab_comdept AS abComdept,
+               ab_birth AS abBirth,
+               ab_tel AS abTel,
+               ab_memo AS abMemo
+        FROM addrbook
+        WHERE ab_id = #{abId}
+    </select>
+
+    <insert id="insertDB" parameterType="lx.edu.springboot.vo.AddrBookVO">
+        INSERT INTO addrbook(ab_name, ab_email, ab_comdept, ab_birth, ab_tel, ab_memo)
+        VALUES (#{abName}, #{abEmail}, #{abComdept}, #{abBirth}, #{abTel}, #{abMemo})
+    </insert>
+
+    <update id="updateDB" parameterType="lx.edu.springboot.vo.AddrBookVO">
+        UPDATE addrbook
+        SET ab_name = #{abName},
+            ab_email = #{abEmail},
+            ab_tel = #{abTel},
+            ab_birth = #{abBirth},
+            ab_comdept = #{abComdept},
+            ab_memo = #{abMemo}
+        WHERE ab_id = #{abId}
+    </update>
+
+    <delete id="deleteDB" parameterType="int">
+        DELETE FROM addrbook WHERE ab_id = #{abId}
+    </delete>
+
+</mapper>

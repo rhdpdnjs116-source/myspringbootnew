@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>주소록:목록화면</title>
+
+    <!-- CSS 적용 (Thymeleaf 방식) -->
+    <link rel="stylesheet" th:href="@{/css/addrbook.css}" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        function check(abId) {
+            document.location.href="edit.do?abId=" + abId;
+        }
+
+        $(document).ready(function(){
+            $('tr[data-abid]').on('click', function(){
+                let abId = $(this).data('abid');
+                document.location.href = "edit.do?abId=" + abId;
+            });
+        });
+    </script>
+</head>
+<body>
+<div align="center">
+    <h2>주소록:목록화면</h2>
+    <hr>
+    <a href="addrbook_form.do">주소록 등록</a>
+    <p>
+
+    <table border="1">
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>생일</th>
+            <th>회사</th>
+            <th>메모</th>
+        </tr>
+
+        <!-- Thymeleaf 반복문 -->
+        <tr th:each="vo : ${data}" th:data-abid="${vo.abId}">
+            <td><a href="|javascript:check([[${vo.abId}]])|" th:text="${vo.abId}">1</a></td>
+            <td th:text="${vo.abName}">홍길동</td>
+            <td th:text="${vo.abTel}">010-1234-5678</td>
+            <td th:text="${vo.abBirth}">2000-01-01</td>
+            <td th:text="${vo.abComdept}">회사</td>
+            <td th:text="${vo.abMemo}">메모</td>
+        </tr>
+    </table>
+</div>
+<scrpit>
+
+</body>
+</html>
